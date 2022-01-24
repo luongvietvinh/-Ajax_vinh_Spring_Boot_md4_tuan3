@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>My First Bootstrap 4 Page</h1>
+    <p>Resize this responsive page to see the effect!</p>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Dark Striped Table</h2>
+    <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>
+    <form action="/find" method="get">
+        <input type="text" class="form-control" placeholder="search" name="name" id="findName" oninput="search()">
+        <button type="submit" class="btn btn-success">Find</button>
+    </form>
+    <table class="table table-dark table-striped">
+
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>img</th>
+            <th>username</th>
+            <th>passWord</th>
+            <th>fullname</th>
+            <th>phoneNumber</th>
+            <th>email</th>
+            <th>role</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+        </tr>
+        </thead>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            create account
+        </button>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="userName">userName:</label>
+                    <input type="text" class="form-control" id="userName">
+                </div>
+                <div class="form-group">
+                    <label for="passWord">passWord:</label>
+                    <input type="password" class="form-control" id="passWord">
+                </div>
+                <div class="form-group">
+                    <label for="fullName">fullname:</label>
+                    <input type="text" class="form-control" id="fullName">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">phoneNumber:</label>
+                    <input type="number" class="form-control" id="phoneNumber">
+                </div>
+                <div class="form-group">
+                    <label for="email">email:</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="img">img:</label>
+                    <input type="text" class="form-control" id="img">
+                </div>
+                <div class="form-group">
+                    <label for="role_id">role_id:</label>
+                    <input type="text" class="form-control" id="role_id">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="create()" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--edit account-->
+
+<div class="modal fade" id="editexam" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="userNameEdit">userName:</label>
+                    <input type="text" class="form-control" id="userNameEdit">
+                </div>
+
+                    <input type="text" class="form-control" id="id" hidden>
+
+                <div class="form-group">
+                    <label for="passWordEdit">passWord:</label>
+                    <input type="password" class="form-control" id="passWordEdit">
+                </div>
+                <div class="form-group">
+                    <label for="fullNameEdit">fullname:</label>
+                    <input type="text" class="form-control" id="fullNameEdit">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumberEdit">phoneNumber:</label>
+                    <input type="number" class="form-control" id="phoneNumberEdit">
+                </div>
+                <div class="form-group">
+                    <label for="emailEdit">email:</label>
+                    <input type="email" class="form-control" id="emailEdit">
+                </div>
+                <div class="form-group">
+                    <label for="imgEdit">img:</label>
+                    <input type="text" class="form-control" id="imgEdit">
+                </div>
+                <div class="form-group">
+                    <label for="role_idEdit">role_id:</label>
+                    <input type="text" class="form-control" id="role_idEdit">
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveEdit()" data-dismiss="modal">enter -> edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <p>Footer</p>
+</div>
+</body>
+</html>
+<script>
+
+    function show() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/account",
+            //xử lý khi thành công
+            success: function (data) {
+                let str = "";
+
+                for (let i = 0; i < data.length; i++) {
+                    str += "<tr>"
+                    str += `<td>${data[i].id}</td>`
+                    str += `<td><img src="${data[i].img}" height="150" width="200"></td>`
+                    str += `<td>${data[i].userName}</td>`
+                    str += `<td>${data[i].passWord}</td>`
+                    str += `<td>${data[i].fullName}</td>`
+                    str += `<td>${data[i].phoneNumber}</td>`
+                    str += `<td>${data[i].email}</td>`
+                    str += `<td>${data[i].role.role_name}</td>`
+                    str += `<td>   <button type="button" class="btn btn-warning" data-toggle="modal" onclick="showedit(${data[i].id})" data-target="#editexam">edit </button></td>`
+                    str += `<td>   <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteacc(${data[i].id})">delete </button></td>`
+
+                    str += "</tr>"
+                }
+
+                document.getElementById("tbody").innerHTML = str;
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    show();
+
+    function showedit(id){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/account/" + id,
+            //xử lý khi thành công
+            success: function (data) {
+                document.getElementById("userNameEdit").value = data.userName;
+                 document.getElementById("passWordEdit").value = data.passWord;
+                 document.getElementById("fullNameEdit").value = data.fullName;
+                 document.getElementById("phoneNumberEdit").value = data.phoneNumber;
+                 document.getElementById("emailEdit").value = data.email;
+                 document.getElementById("imgEdit").value = data.img;
+                 document.getElementById("id").value = data.id;
+                 document.getElementById("role_idEdit").value = data.role.id;
+                    },
+                    error: function (err) {
+                    console.log(err)
+                }
+            })
+    }
+    function deleteacc() {
+
+        let id = document.getElementById("id").value;
+        let url = `http://localhost:8080/account/` + id;
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json'
+            },
+            type: "Delete",
+            url: url,
+            data: JSON.stringify(id),
+            //xử lý khi thành công
+            success: function (data) {
+                document.getElementById("tbody").innerHTML = show(data);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    alert("bạn có chắc muốn xóa không")
+    }
+
+    function search() {
+        let name = document.getElementById("findName").value;
+        let url = `http://localhost:8080/account/find/${name}`;
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json'
+            },
+            type: "GET",
+            url: url,
+            //xử lý khi thành công
+            success: function (data) {
+                document.getElementById("tbody").innerHTML = show(data);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    function saveEdit() {
+        let account = {
+            id : document.getElementById("id").value,
+            userName: document.getElementById("userNameEdit").value,
+            passWord: document.getElementById("passWordEdit").value,
+            fullName: document.getElementById("fullNameEdit").value,
+            phoneNumber: document.getElementById("phoneNumberEdit").value,
+            email: document.getElementById("emailEdit").value,
+            img: document.getElementById("imgEdit").value,
+            role: {id:1}
+        }
+        $.ajax({
+            type: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/account/" + account.id,
+            data: JSON.stringify(account),
+            //xử lý khi thành công
+            success: function (data) {
+                show()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+
+
+
+    function create() {
+        let userName = document.getElementById("userName").value;
+        let passWord = document.getElementById("passWord").value;
+        let fullName = document.getElementById("fullName").value;
+        let phoneNumber = document.getElementById("phoneNumber").value;
+        let email = document.getElementById("email").value;
+        let img = document.getElementById("img").value;
+        let role = document.getElementById("role_id").value;
+        let account = {
+            userName: userName,
+            passWord: passWord,
+            fullName: fullName,
+            phoneNumber: phoneNumber,
+            email: email,
+            img: img,
+            role: {id: role}
+        }
+        $.ajax({
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'content-Type': 'application/json'
+            },
+            url: "http://localhost:8080/account",
+            data: JSON.stringify(account),
+            //xử lý khi thành công
+            success: function (data) {
+                show()
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
+</script>
